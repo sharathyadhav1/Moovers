@@ -49,7 +49,9 @@ import com.moovers.monitor.presentation.truck_monitor_screen.BottomMenuScreen
 import com.moovers.monitor.presentation.truck_monitor_screen.TruckViewModel
 import com.moovers.monitor.presentation.truck_monitor_screen.components.BottomMenu
 import com.moovers.monitor.presentation.truck_monitor_screen.components.SearchView
+import com.moovers.monitor.presentation.truck_monitor_screen.screen.ContentInRow
 import com.moovers.monitor.presentation.truck_monitor_screen.screen.TruckListView
+import com.moovers.monitor.presentation.truck_monitor_screen.screen.TruckMapView
 
 import java.text.SimpleDateFormat
 import androidx.compose.foundation.layout.Box as Box
@@ -195,7 +197,18 @@ fun NavGraphBuilder.bottomNavigation(navController: NavController, truckList: Mu
             Surface() {
                 if (truckList != null && truckList.isNotEmpty()) {
                     // Render your Composable using the non-empty list
+                    TruckMapView(truckList[selectedItem])
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
 
+                            .fillMaxWidth()
+                            .background(Color.Transparent)
+                    ) {
+                        ContentInRow(truckList){
+                            selectedItem = it
+                        }
+                    }
                 } else {
                     // Handle the case where the list is either null or empty
                     NoTextInSurface("No items to display")
