@@ -49,6 +49,7 @@ import com.moovers.monitor.presentation.truck_monitor_screen.BottomMenuScreen
 import com.moovers.monitor.presentation.truck_monitor_screen.TruckViewModel
 import com.moovers.monitor.presentation.truck_monitor_screen.components.BottomMenu
 import com.moovers.monitor.presentation.truck_monitor_screen.components.SearchView
+import com.moovers.monitor.presentation.truck_monitor_screen.screen.TruckListView
 
 import java.text.SimpleDateFormat
 import androidx.compose.foundation.layout.Box as Box
@@ -176,7 +177,7 @@ fun NavGraphBuilder.bottomNavigation(navController: NavController, truckList: Mu
 
         Surface(){
             if (truckList != null && truckList.isNotEmpty()) {
-
+                TruckListView(navController = navController, truckList)
             }
             else{
                 NoTextInSurface("No items to display")
