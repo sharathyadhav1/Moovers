@@ -50,7 +50,7 @@ fun ContentInColum(response:  MutableList<TruckResponseItem>) {
             modifier = Modifier.background(Color.Transparent)
         ) {
             itemsIndexed(response) { index, item ->
-                TruckItem(item){
+                ListItem(item){
                     println(index)
 
                 }
