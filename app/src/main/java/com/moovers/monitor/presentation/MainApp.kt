@@ -43,12 +43,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-
 import com.moovers.monitor.R
 import com.moovers.monitor.domain.model.TruckResponseItem
 import com.moovers.monitor.presentation.truck_monitor_screen.BottomMenuScreen
 import com.moovers.monitor.presentation.truck_monitor_screen.TruckViewModel
 import com.moovers.monitor.presentation.truck_monitor_screen.components.BottomMenu
+import com.moovers.monitor.presentation.truck_monitor_screen.components.SearchView
+
 import java.text.SimpleDateFormat
 import androidx.compose.foundation.layout.Box as Box
 
@@ -64,9 +65,10 @@ fun MainApp() {
 @Composable
 fun MainScreen(navController: NavHostController, scrollState: ScrollState, viewModel : TruckViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
-
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX")
     var truckList by remember { mutableStateOf(mutableListOf<TruckResponseItem>()) }
-
+    var isAscending by remember { mutableStateOf(true) }
+    val textState = remember { mutableStateOf(TextFieldValue("")) }
     val contextForToast = LocalContext.current.applicationContext
 
     when(uiState){
@@ -85,20 +87,68 @@ fun MainScreen(navController: NavHostController, scrollState: ScrollState, viewM
 
     }
 
+    // Function to filter the list based on the search query
+    fun filterList(searchText: String): MutableList<TruckResponseItem> {
+        return if (searchText.isEmpty()) {
+            // If search query is empty, return the original list
+            truckList
+        } else {
+            // Use filter to find items that contain the search query
+            truckList.filter { item ->
+                item.driverName.contains(searchText, ignoreCase = true)
+            }.toMutableList()
+        }
+    }
+    println(textState.value.text)
 
+
+    if (isAscending) {
+        truckList.sortWith(compareBy<TruckResponseItem> { dateFormat.parse(it.lastUpdated) })
+    } else {
+        truckList.sortWith(compareByDescending<TruckResponseItem> { dateFormat.parse(it.lastUpdated) })
+    }
 
     Scaffold(
-
+        topBar = { AppBar( textState) {
+            isAscending = !isAscending
+        } },
 
         bottomBar ={
-        BottomMenu(navController = navController)
-    }) {
+            BottomMenu(navController = navController)
+        }) {
         Navigation(
             navController =navController , scrollState =scrollState,
-            paddingValues = it,truckList)
+            paddingValues = it,filterList(textState.value.text))
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AppBar(textState: MutableState<TextFieldValue>, buttonClick: () -> Unit) {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .wrapContentHeight()
+        .background(color = MaterialTheme.colorScheme.primary)) {
+
+        CenterAlignedTopAppBar(
+            title = { Text(text = "Truck Monitor", color = Color.White,fontWeight = FontWeight.Bold) },
+
+            actions = {
+                val drawableResId = R.drawable.baseline_swap_vert_white_36
+                val painter: Painter = painterResource(id = drawableResId)
+
+                IconButton(onClick = buttonClick) {
+                    Icon( painter = painter, contentDescription = "Sort Items",tint = Color.White)
+                }
+            },
+            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            )
+        )
+
+        SearchView(textState)
+    }
+}
 
 
 
@@ -112,8 +162,8 @@ fun Navigation(
 ) {
 
     NavHost(navController = navController,
-            startDestination = BottomMenuScreen.ListView.route,
-            modifier = Modifier.padding(paddingValues)) {
+        startDestination = BottomMenuScreen.ListView.route,
+        modifier = Modifier.padding(paddingValues)) {
         bottomNavigation(navController = navController,truckList)
 
 
@@ -167,7 +217,7 @@ fun NoTextInSurface(text: String) {
                 text = text,
                 fontSize = 20.sp,
 
-            )
+                )
         }
     }
 }
