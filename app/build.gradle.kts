@@ -69,6 +69,7 @@ dependencies {
     //hilt dependencies
     implementation("com.google.dagger:hilt-android:2.44")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.gms:play-services-analytics-impl:18.0.3")
     testImplementation("junit:junit:4.12")
     testImplementation("junit:junit:4.12")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
