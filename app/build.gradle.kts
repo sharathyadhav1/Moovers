@@ -69,6 +69,8 @@ dependencies {
     //hilt dependencies
     implementation("com.google.dagger:hilt-android:2.44")
     implementation("com.google.android.material:material:1.9.0")
+    testImplementation("junit:junit:4.12")
+    testImplementation("junit:junit:4.12")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
@@ -102,6 +104,13 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //testing tool
+
+    testImplementation ("org.mockito:mockito-core:2.19.0")
+    androidTestImplementation("io.mockk:mockk-android:1.13.7")
+
+
 }
 kapt {
     correctErrorTypes = true
