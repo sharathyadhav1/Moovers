@@ -72,12 +72,26 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
-    
+
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+
+    //Room
+    implementation ("androidx.room:room-runtime:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
+    implementation ("androidx.room:room-ktx:2.5.2") // Kotlin Extens
+
+
+    //Navigation
+    val nav_version = "2.7.2"
+
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    // Image loader
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
 
 
