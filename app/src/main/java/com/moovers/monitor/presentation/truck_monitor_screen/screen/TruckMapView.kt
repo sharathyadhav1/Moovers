@@ -1,5 +1,10 @@
 package com.moovers.monitor.presentation.truck_monitor_screen.screen
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.PorterDuff
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,45 +32,55 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import coil.compose.rememberImagePainter
 
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMapOptions
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
 import com.google.maps.android.compose.MapUiSettings
 import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
+import com.moovers.monitor.R
 import com.moovers.monitor.domain.model.TruckResponseItem
 import com.moovers.monitor.util.Utility
 import com.moovers.monitor.util.Utility.getTimeAgo
+import kotlinx.coroutines.launch
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun TruckMapView(truckResponseItem: TruckResponseItem) {
     println("asd"+truckResponseItem.driverName)
     var markerPosition by remember { mutableStateOf(LatLng(0.0, 0.0)) }
 
-    //LaunchedEffect(truckResponseItem) {
+    LaunchedEffect(truckResponseItem) {
         markerPosition = LatLng(truckResponseItem.lat, truckResponseItem.lng)
-    //}
+    }
+    var zoomLevel = remember { mutableStateOf(10f) }
+
 
 
     val context = LocalContext.current
     val cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition(markerPosition, 12f,0f,0f)
+        position = CameraPosition(markerPosition, zoomLevel.value,0f,0f)
     }
 
     val mapProperties by remember {
@@ -88,18 +103,74 @@ fun TruckMapView(truckResponseItem: TruckResponseItem) {
         properties = mapProperties,
         uiSettings = mapUiSettings
     ){
-        Marker(
-            state = MarkerState(position = markerPosition),
-            title = truckResponseItem.plateNo,
-            snippet = truckResponseItem.driverName
+        val scope = rememberCoroutineScope()
+
+        MapMarker(
+            position = markerPosition,
+            title =  truckResponseItem.plateNo,
+            description = truckResponseItem.driverName,
+            context = LocalContext.current,
+            iconResourceId = R.drawable.baseline_fmd_good_black_36
         )
+        scope.launch {
+            cameraPositionState.centerOnLocation(markerPosition, zoomLevel.value)
+        }
     }
     //cameraPositionState.move(CameraUpdateFactory.zoomIn())
 
 
 }
 
+@Composable
+fun MapMarker(
+    context: Context,
+    position: LatLng,
+    title: String,description: String,
+    @DrawableRes iconResourceId: Int
+) {
 
+    val colorResourceId = MaterialTheme.colorScheme.primary // Replace R.color.primaryColor with the actual resource ID
+
+    val icon = bitmapDescriptor(
+        context, iconResourceId,colorResourceId
+    )
+    Marker(
+        state = MarkerState(position = position),
+        snippet = description,
+        title = title,
+        icon = icon,
+    )
+}
+
+fun bitmapDescriptor(context: Context, iconResourceId: Int, colorResourceId: Color): BitmapDescriptor? {
+    val drawable = ContextCompat.getDrawable(context, iconResourceId) ?: return null
+    drawable.setBounds(0, 0, drawable.intrinsicWidth, drawable.intrinsicHeight)
+
+
+
+    val tintedDrawable = drawable.mutate()
+    tintedDrawable.setColorFilter(colorResourceId.toArgb(), PorterDuff.Mode.SRC_IN)
+
+    val bm = Bitmap.createBitmap(
+        drawable.intrinsicWidth,
+        drawable.intrinsicHeight,
+        Bitmap.Config.ARGB_8888
+    )
+
+    // draw it onto the bitmap
+    val canvas = android.graphics.Canvas(bm)
+    drawable.draw(canvas)
+    return BitmapDescriptorFactory.fromBitmap(bm)
+}
+
+suspend fun CameraPositionState.centerOnLocation(
+    latLng: LatLng, zoom: Float
+) = animate(
+    update = CameraUpdateFactory.newLatLngZoom(
+        LatLng(latLng.latitude, latLng.longitude),
+        zoom
+    ),
+)
 
 @Composable
 fun ContentInRow(truckList: MutableList<TruckResponseItem>, onItemClick: (Int) -> Unit) {
