@@ -16,7 +16,6 @@ class GetTruckUseCaseTest{
 
     private lateinit var getTruckUseCase: GetTruckUseCase
 
-    // Mocked dependencies
     @Mock
     private lateinit var repository: TruckMonitorRepository
 
@@ -25,7 +24,6 @@ class GetTruckUseCaseTest{
         // Initialize the mocked dependencies
         MockitoAnnotations.initMocks(this)
 
-        // Create an instance of the class under test with the mocked repository
         getTruckUseCase = GetTruckUseCase(repository)
     }
 
@@ -34,7 +32,6 @@ class GetTruckUseCaseTest{
         // Arrange
         val expectedTruckList = mutableListOf<TruckResponseItem>()
 
-        // Mock the behavior of the repository
         `when`(repository.fetchTruckDetails()).thenReturn(expectedTruckList)
 
         // Act

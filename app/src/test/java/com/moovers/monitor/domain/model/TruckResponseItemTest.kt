@@ -23,7 +23,6 @@ class TruckResponseItemTest{
         // Parse the lastUpdated date using SimpleDateFormat
         val expectedDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX").parse(lastUpdated)
 
-        // Verify that the lastUpdatedDate property in the TruckResponseItem matches the expected date
         assertEquals(expectedDate, truckResponseItem.lastUpdatedDate)
     }
 
@@ -41,7 +40,6 @@ class TruckResponseItemTest{
             "ABC123"
         )
 
-        // Verify that the lastUpdatedDate property is null for an invalid date string
         assertNull(truckResponseItem.lastUpdatedDate)
     }
 }
