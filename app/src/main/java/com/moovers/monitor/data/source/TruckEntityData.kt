@@ -7,5 +7,5 @@ interface TruckEntityData {
 
     suspend fun getTruckDetails(): MutableList<TruckResponseItem>
 
-    suspend fun addTruckDetails(praySchedules: MutableList<TruckResponseItem>)
+    suspend fun addTruckDetails(truckResponseItem: MutableList<TruckResponseItem>)
 }
