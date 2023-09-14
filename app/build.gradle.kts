@@ -50,6 +50,8 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            merges += "META-INF/LICENSE.md"
+            merges += "META-INF/LICENSE-notice.md"
         }
     }
 }
@@ -78,6 +80,8 @@ dependencies {
     testImplementation("junit:junit:4.12")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.38.1")
+
 
 
     // Retrofit
@@ -100,6 +104,7 @@ dependencies {
     // Image loader
     implementation("io.coil-kt:coil-compose:2.4.0")
 
+    androidTestImplementation ("androidx.test:runner:1.5.2")
 
 
     testImplementation("junit:junit:4.13.2")
@@ -109,12 +114,19 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
     //testing tool
 
     testImplementation ("org.mockito:mockito-core:2.19.0")
-    androidTestImplementation("io.mockk:mockk-android:1.13.7")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
 
+// Test module build.gradle
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.38.1")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
+    kapt("androidx.hilt:hilt-compiler:1.1.0-alpha01")
+
+    testImplementation ("io.mockk:mockk:1.13.7")
+    androidTestImplementation("io.mockk:mockk-android:1.13.7")
 
 }
 kapt {

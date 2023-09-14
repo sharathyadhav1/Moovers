@@ -1,6 +1,7 @@
 package com.moovers.monitor.domain.repository
 
 import com.moovers.monitor.domain.model.TruckResponseItem
+import dagger.Provides
 
 
 interface TruckMonitorRepository {

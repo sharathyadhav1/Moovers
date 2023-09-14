@@ -14,6 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ViewModelComponent::class)
+
 abstract class TruckModule {
 
     @Binds
