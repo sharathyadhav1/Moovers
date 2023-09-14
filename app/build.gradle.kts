@@ -19,7 +19,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.moovers.monitor.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -32,6 +32,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            isTestCoverageEnabled= true
         }
     }
     compileOptions {
@@ -127,6 +130,8 @@ dependencies {
 
     testImplementation ("io.mockk:mockk:1.13.7")
     androidTestImplementation("io.mockk:mockk-android:1.13.7")
+
+
 
 }
 kapt {

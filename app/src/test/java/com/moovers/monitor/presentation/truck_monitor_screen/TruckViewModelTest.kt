@@ -57,7 +57,7 @@ class TruckViewModelTest {
     private lateinit var repository: TruckMonitorRepository
 
 
-    private val listOfTrucks = (0..2).map{
+   /* private val listOfTrucks = (0..2).map{
         val truckResponseItem = TruckResponseItem(
             "John Doe",
             "image_url",
@@ -67,7 +67,7 @@ class TruckViewModelTest {
             "New York",
             "ABC123"
         )
-    }
+    }*/
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
@@ -85,7 +85,7 @@ class TruckViewModelTest {
 
     }
 
- 
+
 
 
     @Test

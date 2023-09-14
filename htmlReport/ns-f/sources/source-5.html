@@ -1,0 +1,115 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > TruckViewModel_Factory</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.moovers.monitor.presentation.truck_monitor_screen</a>
+</div>
+
+<h1>Coverage Summary for Class: TruckViewModel_Factory (com.moovers.monitor.presentation.truck_monitor_screen)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">TruckViewModel_Factory</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.moovers.monitor.presentation.truck_monitor_screen;
+&nbsp;
+&nbsp;import com.moovers.monitor.data.networking.CoroutineDispatcherProvider;
+&nbsp;import com.moovers.monitor.domain.usecase.GetTruckUseCase;
+&nbsp;import dagger.internal.DaggerGenerated;
+&nbsp;import dagger.internal.Factory;
+&nbsp;import dagger.internal.QualifierMetadata;
+&nbsp;import dagger.internal.ScopeMetadata;
+&nbsp;import javax.annotation.processing.Generated;
+&nbsp;import javax.inject.Provider;
+&nbsp;
+&nbsp;@ScopeMetadata
+&nbsp;@QualifierMetadata
+&nbsp;@DaggerGenerated
+&nbsp;@Generated(
+&nbsp;    value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
+&nbsp;    comments = &quot;https://dagger.dev&quot;
+&nbsp;)
+&nbsp;@SuppressWarnings({
+&nbsp;    &quot;unchecked&quot;,
+&nbsp;    &quot;rawtypes&quot;
+&nbsp;})
+&nbsp;public final class TruckViewModel_Factory implements Factory&lt;TruckViewModel&gt; {
+&nbsp;  private final Provider&lt;GetTruckUseCase&gt; getTruckUseCaseProvider;
+&nbsp;
+&nbsp;  private final Provider&lt;CoroutineDispatcherProvider&gt; coroutineDispatcherProvider;
+&nbsp;
+&nbsp;  public TruckViewModel_Factory(Provider&lt;GetTruckUseCase&gt; getTruckUseCaseProvider,
+&nbsp;      Provider&lt;CoroutineDispatcherProvider&gt; coroutineDispatcherProvider) {
+&nbsp;    this.getTruckUseCaseProvider = getTruckUseCaseProvider;
+&nbsp;    this.coroutineDispatcherProvider = coroutineDispatcherProvider;
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public TruckViewModel get() {
+&nbsp;    return newInstance(getTruckUseCaseProvider.get(), coroutineDispatcherProvider.get());
+&nbsp;  }
+&nbsp;
+&nbsp;  public static TruckViewModel_Factory create(Provider&lt;GetTruckUseCase&gt; getTruckUseCaseProvider,
+&nbsp;      Provider&lt;CoroutineDispatcherProvider&gt; coroutineDispatcherProvider) {
+&nbsp;    return new TruckViewModel_Factory(getTruckUseCaseProvider, coroutineDispatcherProvider);
+&nbsp;  }
+&nbsp;
+&nbsp;  public static TruckViewModel newInstance(GetTruckUseCase getTruckUseCase,
+&nbsp;      CoroutineDispatcherProvider coroutineDispatcherProvider) {
+&nbsp;    return new TruckViewModel(getTruckUseCase, coroutineDispatcherProvider);
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-09-15 01:07</div>
+</div>
+</body>
+</html>

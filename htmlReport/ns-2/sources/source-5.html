@@ -1,0 +1,111 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LocalModule_ProvideTruckDaoFactory</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.moovers.monitor.data.di</a>
+</div>
+
+<h1>Coverage Summary for Class: LocalModule_ProvideTruckDaoFactory (com.moovers.monitor.data.di)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">LocalModule_ProvideTruckDaoFactory</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.moovers.monitor.data.di;
+&nbsp;
+&nbsp;import com.moovers.monitor.data.local.TruckDatabase;
+&nbsp;import com.moovers.monitor.data.local.TruckDetailsDao;
+&nbsp;import dagger.internal.DaggerGenerated;
+&nbsp;import dagger.internal.Factory;
+&nbsp;import dagger.internal.Preconditions;
+&nbsp;import dagger.internal.QualifierMetadata;
+&nbsp;import dagger.internal.ScopeMetadata;
+&nbsp;import javax.annotation.processing.Generated;
+&nbsp;import javax.inject.Provider;
+&nbsp;
+&nbsp;@ScopeMetadata(&quot;javax.inject.Singleton&quot;)
+&nbsp;@QualifierMetadata
+&nbsp;@DaggerGenerated
+&nbsp;@Generated(
+&nbsp;    value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
+&nbsp;    comments = &quot;https://dagger.dev&quot;
+&nbsp;)
+&nbsp;@SuppressWarnings({
+&nbsp;    &quot;unchecked&quot;,
+&nbsp;    &quot;rawtypes&quot;
+&nbsp;})
+&nbsp;public final class LocalModule_ProvideTruckDaoFactory implements Factory&lt;TruckDetailsDao&gt; {
+&nbsp;  private final Provider&lt;TruckDatabase&gt; truckDatabaseProvider;
+&nbsp;
+&nbsp;  public LocalModule_ProvideTruckDaoFactory(Provider&lt;TruckDatabase&gt; truckDatabaseProvider) {
+&nbsp;    this.truckDatabaseProvider = truckDatabaseProvider;
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public TruckDetailsDao get() {
+&nbsp;    return provideTruckDao(truckDatabaseProvider.get());
+&nbsp;  }
+&nbsp;
+&nbsp;  public static LocalModule_ProvideTruckDaoFactory create(
+&nbsp;      Provider&lt;TruckDatabase&gt; truckDatabaseProvider) {
+&nbsp;    return new LocalModule_ProvideTruckDaoFactory(truckDatabaseProvider);
+&nbsp;  }
+&nbsp;
+&nbsp;  public static TruckDetailsDao provideTruckDao(TruckDatabase truckDatabase) {
+&nbsp;    return Preconditions.checkNotNullFromProvides(LocalModule.INSTANCE.provideTruckDao(truckDatabase));
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-09-15 01:07</div>
+</div>
+</body>
+</html>
