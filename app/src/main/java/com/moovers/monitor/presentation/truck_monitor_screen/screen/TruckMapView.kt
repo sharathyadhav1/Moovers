@@ -46,6 +46,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import coil.compose.rememberImagePainter
+import coil.transform.CircleCropTransformation
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.BitmapDescriptor
@@ -208,10 +209,19 @@ fun ListItem(truckResponseItem :TruckResponseItem,onItemClick: () -> Unit){
                 .clickable { onItemClick()}
         ) {
             Row {
-                Image(
-                    painter = rememberImagePainter("https://www.themealdb.com//images//category//goat.png"),
-                    contentDescription = null,
+                val painter = rememberImagePainter(
+                    data = truckResponseItem.imageURL,
+                    builder = {
+                        placeholder(R.drawable.placeholder) // Replace with your placeholder drawable
+                        crossfade(true) // Enable crossfade animation
+                        transformations(CircleCropTransformation()) // You can apply any other transformations here
+                        error(R.drawable.placeholder)
+                    }
+                )
 
+                Image(
+                    painter = painter,
+                    contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .padding(8.dp)
