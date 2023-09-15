@@ -57,6 +57,11 @@ android {
             merges += "META-INF/LICENSE-notice.md"
         }
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -76,14 +81,15 @@ dependencies {
 
     //hilt dependencies
     implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.38.1")
+
+
     implementation("com.google.android.material:material:1.9.0")
     implementation("com.google.android.gms:play-services-analytics-impl:18.0.3")
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     testImplementation("junit:junit:4.12")
-    testImplementation("junit:junit:4.12")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.38.1")
 
 
 
@@ -120,7 +126,7 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     //testing tool
 
-    testImplementation ("org.mockito:mockito-core:2.19.0")
+    testImplementation ("org.mockito:mockito-core:4.5.1")
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
 
 // Test module build.gradle
@@ -128,8 +134,13 @@ dependencies {
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
     kapt("androidx.hilt:hilt-compiler:1.1.0-alpha01")
 
-    testImplementation ("io.mockk:mockk:1.13.7")
-    androidTestImplementation("io.mockk:mockk-android:1.13.7")
+
+
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation ("org.mockito:mockito-android:4.5.1")
+
+    testImplementation("org.mockito:mockito-inline:2.8.47")
+
 
 
 

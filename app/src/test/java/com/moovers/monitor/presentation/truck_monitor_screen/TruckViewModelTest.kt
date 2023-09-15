@@ -1,23 +1,12 @@
 package com.moovers.monitor.presentation.truck_monitor_screen
 
-import androidx.annotation.StringRes
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.moovers.monitor.ExceptionParser
 import com.moovers.monitor.data.networking.CoroutineDispatcherProvider
 import com.moovers.monitor.domain.model.TruckResponseItem
 import com.moovers.monitor.domain.repository.TruckMonitorRepository
 import com.moovers.monitor.domain.usecase.GetTruckUseCase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
-import kotlinx.coroutines.test.setMain
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.test.StandardTestDispatcher
 import org.junit.After
 import org.junit.Assert.*
@@ -25,14 +14,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
-import org.mockito.Mockito.verifyNoMoreInteractions
-import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
-import org.mockito.hamcrest.MockitoHamcrest.argThat
-import java.text.SimpleDateFormat
-import javax.inject.Inject
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class TruckViewModelTest {

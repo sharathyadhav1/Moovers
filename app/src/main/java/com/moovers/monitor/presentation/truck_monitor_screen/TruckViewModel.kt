@@ -13,9 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 import java.text.SimpleDateFormat
-import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -51,7 +49,7 @@ class TruckViewModel @Inject constructor(
 
     sealed class TruckUiState {
         object Loading : TruckUiState()
-        class Loaded(val truckResponse: MutableList<TruckResponseItem>) : TruckUiState()
+        class Loaded(val truckResponse: List<TruckResponseItem>) : TruckUiState()
         class Error(@StringRes val message: Int) : TruckUiState()
     }
 }

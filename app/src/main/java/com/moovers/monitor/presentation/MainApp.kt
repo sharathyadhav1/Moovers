@@ -80,7 +80,7 @@ fun MainScreen(navController: NavHostController, scrollState: ScrollState, viewM
         }
         is TruckViewModel.TruckUiState.Loaded -> {
             val response = (uiState as TruckViewModel.TruckUiState.Loaded).truckResponse
-            truckList = response
+            truckList = response.toMutableList()
 
         }
         TruckViewModel.TruckUiState.Loading -> {
