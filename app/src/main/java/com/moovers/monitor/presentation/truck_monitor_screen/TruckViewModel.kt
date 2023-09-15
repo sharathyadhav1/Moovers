@@ -49,7 +49,7 @@ class TruckViewModel @Inject constructor(
 
     sealed class TruckUiState {
         object Loading : TruckUiState()
-        class Loaded(val truckResponse: List<TruckResponseItem>) : TruckUiState()
+        class Loaded(val truckResponse: MutableList<TruckResponseItem>) : TruckUiState()
         class Error(@StringRes val message: Int) : TruckUiState()
     }
 }
