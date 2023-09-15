@@ -36,7 +36,7 @@ class TruckViewModelTest {
     private lateinit var viewModel: TruckViewModel
 
     @Mock
-    private lateinit var repository: TruckMonitorRepository
+    private lateinit var   repository: TruckMonitorRepository
 
 
    /* private val listOfTrucks = (0..2).map{

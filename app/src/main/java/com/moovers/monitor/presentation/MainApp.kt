@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.sp
@@ -134,7 +135,7 @@ fun AppBar(textState: MutableState<TextFieldValue>, buttonClick: () -> Unit) {
         .background(color = MaterialTheme.colorScheme.primary)) {
 
         CenterAlignedTopAppBar(
-            title = { Text(text = "Truck Monitor", color = Color.White,fontWeight = FontWeight.Bold) },
+            title = { Text(text = stringResource(R.string.truck_monitor), color = Color.White,fontWeight = FontWeight.Bold) },
 
             actions = {
                 val drawableResId = R.drawable.baseline_swap_vert_white_36

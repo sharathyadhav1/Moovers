@@ -22,22 +22,27 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.moovers.monitor.R
 
 import com.moovers.monitor.ui.theme.lightBlue
+import com.moovers.monitor.util.TestTags.SEARCH_SECTION
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchView(state: MutableState<TextFieldValue>) {
     Surface(
         shape = RoundedCornerShape(14.dp),
-        modifier = Modifier.padding(start = 10.dp,  end = 10.dp, top = 0.dp ,bottom =10.dp),
-        color = MaterialTheme.colorScheme.lightBlue
+        modifier = Modifier.padding(start = 10.dp,  end = 10.dp, top = 0.dp ,bottom =10.dp).testTag(SEARCH_SECTION),
+        color = MaterialTheme.colorScheme.lightBlue,
+
     ) {
         TextField(
 
@@ -45,17 +50,17 @@ fun SearchView(state: MutableState<TextFieldValue>) {
             onValueChange = { value ->
                 state.value = value
             },
-            placeholder = { Text(text = "Search",color = Color.White) },
+            placeholder = { Text(text = stringResource(R.string.search),color = Color.White) },
             modifier = Modifier
                 .fillMaxWidth(),
             textStyle = TextStyle(fontSize = 14.sp,color = Color.White),
             leadingIcon = {
                 Icon(
                     Icons.Default.Search,
-                    contentDescription = "",
+                    contentDescription = stringResource(R.string.search_content),
                     tint = Color.White,
                     modifier = Modifier
-                        .padding(start = 10.dp,  end = 0.dp, top = 0.dp ,bottom =0.dp)
+                        .padding(start = 10.dp, end = 0.dp, top = 0.dp, bottom = 0.dp)
                         .size(24.dp)
                 )
             },
@@ -69,7 +74,7 @@ fun SearchView(state: MutableState<TextFieldValue>) {
                     ) {
                         Icon(
                             Icons.Default.Close,
-                            contentDescription = "",
+                            contentDescription = stringResource(R.string.search_close),
                             tint = Color.White,
                             modifier = Modifier
                                 .padding(10.dp)

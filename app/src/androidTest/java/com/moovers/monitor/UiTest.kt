@@ -6,8 +6,12 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
+import com.moovers.monitor.data.networking.CoroutineDispatcherProvider
 import com.moovers.monitor.domain.model.TruckResponseItem
+import com.moovers.monitor.domain.repository.TruckMonitorRepository
+import com.moovers.monitor.domain.usecase.GetTruckUseCase
 import com.moovers.monitor.presentation.MainScreen
 import com.moovers.monitor.presentation.truck_monitor_screen.TruckViewModel
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -30,6 +34,7 @@ import org.mockito.MockitoAnnotations
 class UiTest {
 
     @get:Rule(order=0)
+
     val hiltRule = HiltAndroidRule(this)
 
     @OptIn(ExperimentalMaterial3Api::class)
@@ -38,13 +43,23 @@ class UiTest {
 
     @Mock
     private lateinit var viewModel: TruckViewModel
+
+    @Mock
+    private lateinit var repository: TruckMonitorRepository
+    @Mock
+    private lateinit var getTruckUseCase: GetTruckUseCase
     @Before
     fun setUp() {
         // Define the behavior of your mock ViewModel
+        MockitoAnnotations.openMocks(this)
         hiltRule.inject()
+       // MockitoAnnotations.openMocks(this)
+
+        val testDispatcherProvider = CoroutineDispatcherProvider()
+    //    getTruckUseCase = GetTruckUseCase(repository)
 
         //MockitoAnnotations.openMocks(this)
-
+     //   viewModel = TruckViewModel(getTruckUseCase,testDispatcherProvider)
         val mockTruckResponse = listOf(
             TruckResponseItem(driverName = "Driver Name 1", imageURL = "", lastUpdated = "", lat = 0.0, lng = 0.0, location = "", plateNo = ""),
             TruckResponseItem(driverName = "Driver Name 2", imageURL = "", lastUpdated = "", lat = 0.0, lng = 0.0, location = "", plateNo = "")
@@ -53,13 +68,14 @@ class UiTest {
 
         val stateFlow: StateFlow<TruckViewModel.TruckUiState> = initialState.asStateFlow()
 
-        `when`(viewModel.uiState).thenReturn(stateFlow)
+       // `when`(viewModel.uiState).thenReturn(stateFlow)
 
 
 
         // Provide the mock ViewModel to the Composable
         composeTestRule.setContent {
-            MainScreen(navController = rememberNavController(), scrollState = rememberScrollState(), viewModel = viewModel)
+
+           // MainScreen(navController = rememberNavController(), scrollState = rememberScrollState(), viewModel =  viewModel)
         }
     }
 

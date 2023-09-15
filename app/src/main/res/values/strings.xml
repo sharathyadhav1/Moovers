@@ -3,4 +3,8 @@
 
     <string name="error_not_found">Error: Not Found</string>
     <string name="error_something_went_wrong">Something went wrong</string>
+    <string name="truck_monitor">Truck Monitor</string>
+    <string name="search">Search</string>
+    <string name="search_content">search_content</string>
+    <string name="search_close">search close</string>
 </resources>
