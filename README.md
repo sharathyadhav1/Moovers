@@ -1,5 +1,9 @@
 # Moovers# Truck Monitor App
 
+
+https://github.com/sharathyadhav1/Moovers/assets/8912909/fc387b09-b261-4aaa-857f-b6b49c59fe44
+
+
 Truck Monitor App is a native Android application that fetches data from an API, stores it in a local Room database, and displays the data in a user-friendly UI. This app has a single screen with two different tabs for displaying data in a list and a map view. It uses Jetpack Compose for the UI, coroutines for asynchronous operations, and Flow for data streaming.
 
 ## Features
