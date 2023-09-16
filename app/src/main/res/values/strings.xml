@@ -7,4 +7,5 @@
     <string name="search">Search</string>
     <string name="search_content">search_content</string>
     <string name="search_close">search close</string>
+    <string name="sort_items">Sort Items</string>
 </resources>

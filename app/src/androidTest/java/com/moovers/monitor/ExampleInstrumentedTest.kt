@@ -2,13 +2,17 @@ package com.moovers.monitor
 
 import android.content.Context
 import android.content.Intent
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.moovers.monitor.util.TestTags
+import com.moovers.monitor.util.TestTags.BTN_ACTION
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 
@@ -69,6 +73,26 @@ class MooversUiTest {
     fun search_tab_content_Description(){
         val search_text_description = composeTestRule.activity.getString(R.string.search_content,0)
         composeTestRule.onNodeWithContentDescription(search_text_description).assertExists()
+    }
+
+    @Test
+    fun btn_action_Sort(){
+        val sort_items = composeTestRule.activity.getString(R.string.sort_items,0)
+        composeTestRule.onNodeWithContentDescription(sort_items).assertExists()
+    }
+
+    @Test
+    fun testButtonClick() {
+        val button = composeTestRule.onNode(hasTestTag(BTN_ACTION), useUnmergedTree = true)
+        button.assertIsDisplayed()
+        button.performClick()
+    }
+
+    @Test
+    fun testListButtonClick() {
+        val button = composeTestRule.onNode(hasTestTag(BTN_ACTION), useUnmergedTree = true)
+        button.assertIsDisplayed()
+        button.performClick()
     }
 
    /*  @Test

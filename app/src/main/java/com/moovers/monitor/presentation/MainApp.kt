@@ -58,6 +58,7 @@ import com.moovers.monitor.presentation.truck_monitor_screen.screen.ContentInRow
 import com.moovers.monitor.presentation.truck_monitor_screen.screen.TruckListView
 import com.moovers.monitor.presentation.truck_monitor_screen.screen.TruckMapView
 import com.moovers.monitor.util.TestTags
+import com.moovers.monitor.util.TestTags.BTN_ACTION
 
 import java.text.SimpleDateFormat
 import androidx.compose.foundation.layout.Box as Box
@@ -148,8 +149,8 @@ fun AppBar(textState: MutableState<TextFieldValue>, buttonClick: () -> Unit) {
                 val drawableResId = R.drawable.baseline_swap_vert_white_36
                 val painter: Painter = painterResource(id = drawableResId)
 
-                IconButton(onClick = buttonClick) {
-                    Icon( painter = painter, contentDescription = "Sort Items",tint = Color.White)
+                IconButton(onClick = buttonClick, modifier = Modifier.testTag(BTN_ACTION)) {
+                    Icon( painter = painter, contentDescription = stringResource(R.string.sort_items),tint = Color.White)
                 }
             },
             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -174,7 +175,9 @@ fun Navigation(
 
     NavHost(navController = navController,
         startDestination = BottomMenuScreen.ListView.route,
-        modifier = Modifier.padding(paddingValues).testTag(TestTags.BOTTOM_TAB_SECTION)) {
+        modifier = Modifier
+            .padding(paddingValues)
+            .testTag(TestTags.BOTTOM_TAB_SECTION)) {
         bottomNavigation(navController = navController,truckList)
 
 
@@ -231,7 +234,9 @@ fun NavGraphBuilder.bottomNavigation(navController: NavController, truckList: Mu
 @Composable
 fun NoTextInSurface(text: String) {
     Box(
-        modifier = Modifier.fillMaxSize().testTag(TestTags.NO_TEXT_SECTION),
+        modifier = Modifier
+            .fillMaxSize()
+            .testTag(TestTags.NO_TEXT_SECTION),
         contentAlignment = Alignment.Center
     ) {
         Surface( color= Color.Transparent) {
@@ -250,7 +255,9 @@ fun showProgress(isShown: Boolean) {
 
 
     Box(
-        modifier = Modifier.fillMaxSize().testTag(TestTags.PROGRESS_BAR_SECTION), contentAlignment = Alignment.Center
+        modifier = Modifier
+            .fillMaxSize()
+            .testTag(TestTags.PROGRESS_BAR_SECTION), contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator(
             modifier = Modifier
