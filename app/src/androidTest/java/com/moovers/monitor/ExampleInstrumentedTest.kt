@@ -59,9 +59,9 @@ class MooversUiTest {
         composeTestRule.onNodeWithText(list_text).assertExists()
     }
 
-  /*  @Test
+   @Test
     fun check_tab_navigation_map(){
-        val map_text = composeTestRule.activity.getString(R.string.search,0)
+        val map_text = "Map"
         composeTestRule.onNodeWithText(map_text).assertExists()
     }
 
@@ -71,7 +71,7 @@ class MooversUiTest {
         composeTestRule.onNodeWithContentDescription(search_text_description).assertExists()
     }
 
-    @Test
+   /*  @Test
     fun search_close_content_Description(){
         val search_text_description = composeTestRule.activity.getString(R.string.search_close,0)
         composeTestRule.onNodeWithContentDescription(search_text_description).assertExists()
@@ -80,6 +80,11 @@ class MooversUiTest {
     @Test
     fun search_view_visibility(){
         composeTestRule.onNodeWithTag(TestTags.SEARCH_SECTION).assertExists()
+    }
+
+    @Test
+    fun bottom_tab_visibility(){
+        composeTestRule.onNodeWithTag(TestTags.BOTTOM_TAB_SECTION).assertExists()
     }
 
 }

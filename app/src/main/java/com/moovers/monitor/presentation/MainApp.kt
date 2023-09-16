@@ -34,6 +34,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -56,6 +57,7 @@ import com.moovers.monitor.presentation.truck_monitor_screen.components.SearchVi
 import com.moovers.monitor.presentation.truck_monitor_screen.screen.ContentInRow
 import com.moovers.monitor.presentation.truck_monitor_screen.screen.TruckListView
 import com.moovers.monitor.presentation.truck_monitor_screen.screen.TruckMapView
+import com.moovers.monitor.util.TestTags
 
 import java.text.SimpleDateFormat
 import androidx.compose.foundation.layout.Box as Box
@@ -172,7 +174,7 @@ fun Navigation(
 
     NavHost(navController = navController,
         startDestination = BottomMenuScreen.ListView.route,
-        modifier = Modifier.padding(paddingValues)) {
+        modifier = Modifier.padding(paddingValues).testTag(TestTags.BOTTOM_TAB_SECTION)) {
         bottomNavigation(navController = navController,truckList)
 
 
