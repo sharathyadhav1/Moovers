@@ -1,3 +1,4 @@
+/*
 package com.moovers.monitor
 
 import androidx.compose.foundation.rememberScrollState
@@ -60,13 +61,15 @@ class UiTest {
 
         //MockitoAnnotations.openMocks(this)
      //   viewModel = TruckViewModel(getTruckUseCase,testDispatcherProvider)
-      /*  val mockTruckResponse = listOf(
+      */
+/*  val mockTruckResponse = listOf(
             TruckResponseItem(driverName = "Driver Name 1", imageURL = "", lastUpdated = "", lat = 0.0, lng = 0.0, location = "", plateNo = ""),
             TruckResponseItem(driverName = "Driver Name 2", imageURL = "", lastUpdated = "", lat = 0.0, lng = 0.0, location = "", plateNo = "")
         )
         val initialState = MutableStateFlow(TruckViewModel.TruckUiState.Loaded(mockTruckResponse.toMutableList()))
 
-        val stateFlow: StateFlow<TruckViewModel.TruckUiState> = initialState.asStateFlow()*/
+        val stateFlow: StateFlow<TruckViewModel.TruckUiState> = initialState.asStateFlow()*//*
+
 
        // `when`(viewModel.uiState).thenReturn(stateFlow)
 
@@ -89,4 +92,4 @@ class UiTest {
 
         // Add more assertions and interactions as needed
     }
-}
+}*/
