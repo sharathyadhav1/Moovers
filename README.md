@@ -31,6 +31,8 @@ Truck Monitor App is a native Android application that fetches data from an API,
 - [Mockito](https://site.mockito.org/)
 - [GitHub Actions](https://github.com/features/actions) (for Continuous Integration)
 
+<img width="1589" alt="Screen Shot 2023-09-16 at 8 48 38 AM" src="https://github.com/sharathyadhav1/Moovers/assets/8912909/95bb4889-c9cf-4325-9732-064bc9bcada4">
+<img width="966" alt="Screen Shot 2023-09-16 at 8 55 16 AM" src="https://github.com/sharathyadhav1/Moovers/assets/8912909/c12a2e48-dfe5-4439-a505-1d054dd7c028">
 
 ## How to Use
 
