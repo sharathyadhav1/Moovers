@@ -231,7 +231,7 @@ fun NavGraphBuilder.bottomNavigation(navController: NavController, truckList: Mu
 @Composable
 fun NoTextInSurface(text: String) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().testTag(TestTags.NO_TEXT_SECTION),
         contentAlignment = Alignment.Center
     ) {
         Surface( color= Color.Transparent) {
@@ -250,11 +250,12 @@ fun showProgress(isShown: Boolean) {
 
 
     Box(
-        modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
+        modifier = Modifier.fillMaxSize().testTag(TestTags.PROGRESS_BAR_SECTION), contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator(
             modifier = Modifier
                 .size(40.dp)
+                .testTag(TestTags.CIRCLE_PROGRESS_BAR_SECTION)
                 .alpha(commentsAlpha),
             color = MaterialTheme.colorScheme.primary,
             strokeWidth = 2.dp

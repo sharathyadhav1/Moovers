@@ -41,6 +41,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -62,6 +63,7 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.moovers.monitor.R
 import com.moovers.monitor.domain.model.TruckResponseItem
+import com.moovers.monitor.util.TestTags
 import com.moovers.monitor.util.Utility
 import com.moovers.monitor.util.Utility.getTimeAgo
 import kotlinx.coroutines.launch
@@ -99,7 +101,7 @@ fun TruckMapView(truckResponseItem: TruckResponseItem) {
     }
     GoogleMap(
 
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().testTag(TestTags.GOOGLE_MAP_SECTION),
         cameraPositionState = cameraPositionState,
         properties = mapProperties,
         uiSettings = mapUiSettings

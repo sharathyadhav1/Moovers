@@ -83,8 +83,23 @@ class MooversUiTest {
     }
 
     @Test
-    fun bottom_tab_visibility(){
-        composeTestRule.onNodeWithTag(TestTags.BOTTOM_TAB_SECTION).assertExists()
+    fun NO_TEXT_visibility(){
+        composeTestRule.onNodeWithTag(TestTags.NO_TEXT_SECTION).assertExists()
+    }
+
+    @Test
+    fun progress_visibility(){
+        composeTestRule.onNodeWithTag(TestTags.PROGRESS_BAR_SECTION).assertExists()
+    }
+
+    @Test
+    fun circle_progress_visibility(){
+        composeTestRule.onNodeWithTag(TestTags.CIRCLE_PROGRESS_BAR_SECTION).assertExists()
+    }
+
+    @Test
+    fun map_visibility(){
+        composeTestRule.onNodeWithTag(TestTags.GOOGLE_MAP_SECTION).assertExists()
     }
 
 }
