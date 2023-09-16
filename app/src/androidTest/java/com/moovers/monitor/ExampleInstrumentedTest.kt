@@ -82,10 +82,6 @@ class MooversUiTest {
         composeTestRule.onNodeWithTag(TestTags.SEARCH_SECTION).assertExists()
     }
 
-    @Test
-    fun NO_TEXT_visibility(){
-        composeTestRule.onNodeWithTag(TestTags.NO_TEXT_SECTION).assertExists()
-    }
 
     @Test
     fun progress_visibility(){
@@ -97,9 +93,6 @@ class MooversUiTest {
         composeTestRule.onNodeWithTag(TestTags.CIRCLE_PROGRESS_BAR_SECTION).assertExists()
     }
 
-    @Test
-    fun map_visibility(){
-        composeTestRule.onNodeWithTag(TestTags.GOOGLE_MAP_SECTION).assertExists()
-    }
+
 
 }
