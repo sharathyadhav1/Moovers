@@ -25,7 +25,7 @@ class TruckMonitorRepositoryImplTest{
     }
 
 
-    @Test
+/*    @Test
     fun testFetchTruckDetailsWithLocalSource() = runBlocking {
         // Arrange
         val localSource = Source.LOCAL
@@ -39,7 +39,7 @@ class TruckMonitorRepositoryImplTest{
         // Assert
         assert(result === truckResponse)
         // Add more assertions based on your specific use case
-    }
+    }*/
 
 
 

@@ -64,7 +64,7 @@ class UiTest {
             TruckResponseItem(driverName = "Driver Name 1", imageURL = "", lastUpdated = "", lat = 0.0, lng = 0.0, location = "", plateNo = ""),
             TruckResponseItem(driverName = "Driver Name 2", imageURL = "", lastUpdated = "", lat = 0.0, lng = 0.0, location = "", plateNo = "")
         )
-        val initialState = MutableStateFlow(TruckViewModel.TruckUiState.Loaded(mockTruckResponse))
+        val initialState = MutableStateFlow(TruckViewModel.TruckUiState.Loaded(mockTruckResponse.toMutableList()))
 
         val stateFlow: StateFlow<TruckViewModel.TruckUiState> = initialState.asStateFlow()
 
