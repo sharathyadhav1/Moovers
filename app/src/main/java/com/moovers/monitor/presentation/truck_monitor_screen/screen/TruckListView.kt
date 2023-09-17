@@ -18,11 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.moovers.monitor.domain.model.TruckResponseItem
+import com.moovers.monitor.util.TestTags.LIST_SECTION
 
 
 @Composable
@@ -47,7 +49,7 @@ fun ContentInColum(response:  MutableList<TruckResponseItem>) {
     Column {
         //  TopTitle(forColumn = false, alpha = rowAlpha)
         LazyColumn(
-            modifier = Modifier.background(Color.Transparent)
+            modifier = Modifier.background(Color.Transparent).testTag(LIST_SECTION)
         ) {
             itemsIndexed(response) { index, item ->
                 ListItem(item){

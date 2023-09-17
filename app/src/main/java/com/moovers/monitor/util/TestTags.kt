@@ -9,4 +9,5 @@ object TestTags {
     const val CIRCLE_PROGRESS_BAR_SECTION = "CIRCLE_PROGRESS_BAR_SECTION"
     const val GOOGLE_MAP_SECTION = "GOOGLE_MAP_SECTION"
     const val BTN_ACTION = "BTN_ACTION"
+    const val LIST_SECTION = "LIST_SECTION"
 }

@@ -15,6 +15,8 @@ import com.moovers.monitor.util.TestTags
 import com.moovers.monitor.util.TestTags.BTN_ACTION
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -116,6 +118,7 @@ class MooversUiTest {
     fun circle_progress_visibility(){
         composeTestRule.onNodeWithTag(TestTags.CIRCLE_PROGRESS_BAR_SECTION).assertExists()
     }
+
 
 
 

@@ -2,18 +2,24 @@ package com.moovers.monitor.presentation.truck_monitor_screen
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.moovers.monitor.ExceptionParser
 import com.moovers.monitor.data.networking.CoroutineDispatcherProvider
 import com.moovers.monitor.domain.model.TruckResponseItem
 import com.moovers.monitor.domain.repository.TruckMonitorRepository
 import com.moovers.monitor.domain.usecase.GetTruckUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.StandardTestDispatcher
 import org.junit.After
+import org.junit.Assert
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
+import org.mockito.Mockito.times
+import org.mockito.Mockito.verify
+import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -81,5 +87,21 @@ class TruckViewModelTest {
         assertEquals(truckResponse, loadedState.truckResponse)
     }
 
+
+   /* @Test
+    fun testErrorState() = runBlocking {
+        `when`(getTruckUseCase.execute()).thenThrow(Exception("Something went wrong"))
+
+        viewModel.getTruckList()
+
+        val uiState = viewModel.uiState.value
+        assertTrue(uiState is TruckViewModel.TruckUiState.Error)
+        val errorState = uiState as TruckViewModel.TruckUiState.Error
+        assertEquals("Something went wrong",errorState)
+
+        // Verify that getTruckUseCase.execute() was called once
+        verify(getTruckUseCase, times(1)).execute()
+    }
+*/
 
 }

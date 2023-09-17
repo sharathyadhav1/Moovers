@@ -31,13 +31,46 @@ class TruckResponseItemTest{
         // Define a sample TruckResponseItem with an invalid lastUpdated date
         val invalidLastUpdated = "invalid_date_string"
         val truckResponseItem = TruckResponseItem(
-            "John Doe",
+            "d1",
             "image_url",
             invalidLastUpdated,
             40.7128,
             -74.0060,
-            "New York",
-            "ABC123"
+            "asd",
+            "asdasd"
+        )
+
+        assertNull(truckResponseItem.lastUpdatedDate)
+    }
+
+    @Test
+    fun testNullableLastUpdatedDate() {
+        // Define a TruckResponseItem with a null lastUpdated value
+        val truckResponseItem = TruckResponseItem(
+            driverName = "asd",
+            imageURL = "",
+            lastUpdated = "",
+            lat = 34.0522,
+            lng = -118.2437,
+            location = "asdsad",
+            plateNo = "asdasd"
+        )
+
+        // Assert that the lastUpdatedDate is null due to an empty lastUpdated string
+       assertNull(truckResponseItem.lastUpdatedDate)
+    }
+
+    @Test
+    fun testLastUpdatedDate() {
+        // Define a TruckResponseItem with a null lastUpdated value
+        val truckResponseItem = TruckResponseItem(
+            driverName = "asdasdasd",
+            imageURL = "asdasdasd",
+            lastUpdated = "",
+            lat = 34.0522,
+            lng = -118.2437,
+            location = "asdasdasd",
+            plateNo = "asdasdasd"
         )
 
         assertNull(truckResponseItem.lastUpdatedDate)
