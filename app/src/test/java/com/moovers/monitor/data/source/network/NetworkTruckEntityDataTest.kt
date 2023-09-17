@@ -40,5 +40,11 @@ class NetworkTruckEntityDataTest{
         assert(result == expectedTruckDetails)
     }
 
+    @Test(expected = NotImplementedError::class)
+    fun testAddTruckDetailsNotImplemented() = runBlocking {
+        val emptyIntList = mutableListOf<TruckResponseItem>()
 
+        networkTruckEntityData.addTruckDetails(emptyIntList)
+
+    }
 }

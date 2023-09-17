@@ -9,8 +9,11 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.navigation.NavController
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.moovers.monitor.domain.model.TruckResponseItem
+import com.moovers.monitor.presentation.truck_monitor_screen.screen.TruckListView
 import com.moovers.monitor.util.TestTags
 import com.moovers.monitor.util.TestTags.BTN_ACTION
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -24,6 +27,9 @@ import org.junit.runner.RunWith
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.times
+import org.mockito.Mockito.verify
 
 /**
  * Instrumented test, which will execute on an Android device.
