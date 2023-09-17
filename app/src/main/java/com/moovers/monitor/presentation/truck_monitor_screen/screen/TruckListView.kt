@@ -61,58 +61,10 @@ fun ContentInColum(response:  MutableList<TruckResponseItem>) {
     }
 }
 
-@Composable
-fun TruckItem(appResponseItem: TruckResponseItem, onNewsClick: () -> Unit = {},) {
-    Box(modifier = Modifier
-        .height(200.dp)
-        .padding(8.dp)
-        .clickable {
-            onNewsClick()
-        }) {
-        Card(
-            elevation = CardDefaults.outlinedCardElevation(),
-            modifier = Modifier
-                .size(width = 280.dp, height = 200.dp)
-                .padding(8.dp)
-                .clickable { }
-        ){
-            Row(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .clickable { }
-                    .padding(top = 12.dp, bottom = 12.dp)
-            ){
-
-            }
-
-        }
-    }
-}
 
 
 
 
-@Composable
-private fun ExploreImage(item: TruckResponseItem?) {
-    AsyncImage(
-        model = item?.imageURL,
-        contentDescription = null,
-    )
-}
 
 
-@Preview(showBackground = true)
-@Composable
-fun TopNewsPreview() {
-    TruckItem(  TruckResponseItem(
-        plateNo = "X 19599",
-        driverName = "Wyatt Liam",
-        lat = 25.357119,
-        lng = 55.391068,
-        location = "Rolla, Sharjah, the UAE",
-        imageURL = "https://i.picsum.photos/id/583/200/300.jpg",
-        lastUpdated = "2023-09-10T01:02:04+00:00"
 
-    )
-    )
-}
